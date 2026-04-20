@@ -40,4 +40,20 @@ export class HashMap {
             bucket.append([key, value]);
         }
     }
+
+    get(key) {
+        let index = this.hash(key);
+        const bucket = this.buckets[index];
+        if (!bucket.head) {
+            return null
+        }
+        let current = bucket.head;
+        while(current) {
+            if (current.value[0] === key) {
+                return current.value[1]
+            }
+            current = current.next;
+        }
+        return null
+    }
 }

@@ -19,3 +19,6 @@ map.set("key2", "newValue2");
 for(let i = 0; i < map.buckets.length; i++) {
     map.buckets[i].print();
 };
+
+console.log(`value associated to "key2": ${map.get("key2")}`);
+console.log(`value associated to "key3": ${map.get("key3")}`);
