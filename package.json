@@ -1,0 +1,20 @@
+{
+  "name": "odin-hash-map",
+  "version": "1.0.0",
+  "description": "The goal of this project is to implement a functional hash map.",
+  "homepage": "https://github.com/Pietro-GAS/odin-hash-map#readme",
+  "bugs": {
+    "url": "https://github.com/Pietro-GAS/odin-hash-map/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pietro-GAS/odin-hash-map.git"
+  },
+  "license": "ISC",
+  "author": "pietrog",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
