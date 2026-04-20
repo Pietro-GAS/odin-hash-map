@@ -42,11 +42,24 @@ export class HashMap {
     }
 
     get(key) {
-        let index = this.hash(key);
-        const bucket = this.buckets[index];
-        if (!bucket.head) {
+        
+        
+        //if (!bucket.head) {
+        //    return null
+        //}
+        //let current = bucket.head;
+        //while(current) {
+        //    if (current.value[0] === key) {
+        //        return current.value[1]
+        //    }
+        //    current = current.next;
+        //}
+        //return null
+        if(!this.has(key)) {
             return null
         }
+        let index = this.hash(key);
+        const bucket = this.buckets[index];
         let current = bucket.head;
         while(current) {
             if (current.value[0] === key) {
@@ -54,7 +67,7 @@ export class HashMap {
             }
             current = current.next;
         }
-        return null
+
     }
 
     has(key) {
