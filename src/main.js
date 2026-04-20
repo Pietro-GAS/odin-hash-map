@@ -37,3 +37,10 @@ for(let i = 0; i < map.buckets.length; i++) {
     map.buckets[i].print();
 };
 console.log(`map length after removing "key1": ${map.length()}\n`);
+
+map.clear();
+console.log(`map after clearing:"`);
+for(let i = 0; i < map.buckets.length; i++) {
+    map.buckets[i].print();
+};
+console.log(`map length after clearing: ${map.length()}\n`);

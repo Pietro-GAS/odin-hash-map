@@ -115,4 +115,11 @@ export class HashMap {
         }
         return sum
     }
+
+    clear() {
+        let index = 0;
+        while (index < this.buckets.length) {
+            this.buckets[i] = new LinkedList();
+        }
+    }
 }
