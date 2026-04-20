@@ -42,19 +42,6 @@ export class HashMap {
     }
 
     get(key) {
-        
-        
-        //if (!bucket.head) {
-        //    return null
-        //}
-        //let current = bucket.head;
-        //while(current) {
-        //    if (current.value[0] === key) {
-        //        return current.value[1]
-        //    }
-        //    current = current.next;
-        //}
-        //return null
         if(!this.has(key)) {
             return null
         }
@@ -84,5 +71,28 @@ export class HashMap {
             current = current.next;
         }
         return false
+    }
+
+    remove(key) {
+        if (!this.has(key)) {
+            return false
+        }
+        let index = this.hash(key);
+        const bucket = this.buckets[index];
+        // If the key is in the head of the bucket, remove it and reassign head
+        if (bucket.head.value[0] === key) {
+            bucket.head = bucket.head.next;
+            return true
+        }
+        let current = bucket.head;
+        let prev = null;
+        // skip over the elements with a different key
+        while (current && current.value[0] !== key) {
+            prev = current;
+            current = current.next;
+        }
+        // remove the key by reassigning the next property of the previous element
+        prev.next = current.next;
+        return true;
     }
 }

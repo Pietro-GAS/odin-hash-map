@@ -25,3 +25,9 @@ console.log(`value associated to "key3": ${map.get("key3")}\n`);
 
 console.log(`map contains "key2": ${map.has("key2")}`);
 console.log(`map contains "key3": ${map.has("key3")}\n`);
+
+map.remove("key1");
+console.log(`map after removing "key1:"`);
+for(let i = 0; i < map.buckets.length; i++) {
+    map.buckets[i].print();
+};
