@@ -22,4 +22,15 @@ export class LinkedList {
         }
         current.next = node;
     }
+
+    print() {
+        let current = this.head;
+        let output = ``;
+        while (current) {
+            output += `(${current.value}) -> `;
+            current = current.next;
+        }
+        output += `null`;
+        console.log(output);
+    }
 }

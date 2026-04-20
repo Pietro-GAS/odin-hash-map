@@ -1,8 +1,13 @@
+import { LinkedList } from "./linked-list.js";
+
 export class HashMap {
     constructor() {
         this.loadFactor = 0.75;
         this.capacity = 16;
-        this.elements = Array(this.capacity);
+        this.buckets = []
+        for (let i = 0; i < this.capacity; i++) {
+            this.buckets[i] = new LinkedList();
+        }
     }
 
     hash(key) {
@@ -16,11 +21,23 @@ export class HashMap {
     }
 
     set(key, value) {
-        const hashedKey = this.hash(key);
-        if (hashedKey < 0 || hashedKey >= this.elements.length) {
+        const index = this.hash(key);
+        if (index < 0 || index >= this.buckets.length) {
             throw new Error("Trying to access index out of bounds");
+        }
+        const bucket = this.buckets[index];
+        if(!bucket.head) {
+            bucket.append([key, value]);
         } else {
-            this.elements[hashedKey] = value;
-        } 
+            let current = bucket.head;
+            while(current) {
+                if(current.value[0] === key) {
+                    current.value[1] = value;
+                    return
+                }
+                current = current.next;
+            }
+            bucket.append([key, value]);
+        }
     }
 }
