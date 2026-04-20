@@ -14,4 +14,9 @@ export class HashMap {
         }
         return hashCode
     }
+
+    set(key, value) {
+        const haskedKey = this.hash(key);
+        this.elements[hashedKey] = value;
+    }
 }
