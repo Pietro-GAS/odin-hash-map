@@ -95,4 +95,24 @@ export class HashMap {
         prev.next = current.next;
         return true;
     }
+
+    length() {
+        let index = 0;
+        let sum = 0;
+        while (index < this.buckets.length) {
+            let bucket = this.buckets[index];
+            if(!bucket.head) {
+                index ++;
+                continue
+            } else {
+                let current = bucket.head;
+                while(current) {
+                    sum ++;
+                    current = current.next;
+                }
+                index ++;
+            }
+        }
+        return sum
+    }
 }
