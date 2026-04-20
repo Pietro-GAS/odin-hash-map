@@ -21,4 +21,7 @@ for(let i = 0; i < map.buckets.length; i++) {
 };
 
 console.log(`value associated to "key2": ${map.get("key2")}`);
-console.log(`value associated to "key3": ${map.get("key3")}`);
+console.log(`value associated to "key3": ${map.get("key3")}\n`);
+
+console.log(`map contains "key2": ${map.has("key2")}`);
+console.log(`map contains "key3": ${map.has("key3")}\n`);

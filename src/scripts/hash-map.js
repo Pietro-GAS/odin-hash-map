@@ -56,4 +56,20 @@ export class HashMap {
         }
         return null
     }
+
+    has(key) {
+        let index = this.hash(key);
+        const bucket = this.buckets[index];
+        if(!bucket.head) {
+            return false
+        }
+        let current = bucket.head;
+        while (current) {
+            if (current.value[0] === key) {
+                return true
+            }
+            current = current.next;
+        }
+        return false
+    }
 }
