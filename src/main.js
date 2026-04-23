@@ -12,7 +12,8 @@ for(let i = 0; i < map.buckets.length; i++) {
 console.log(`map length before setting: ${map.length()}`);
 console.log(`keys before setting: ${map.keys()}`);
 console.log(`values before setting: ${map.values()}`);
-console.log(`entries before setting: ${map.entries()}\n`);
+console.log(`entries before setting: ${map.entries()}`);
+console.log(`needs expansion? ${map.needExpansion()}\n`);
 
 map.set("key1", "value1");
 map.set("key2", "value2");

@@ -190,6 +190,10 @@ export class HashMap {
         }
         return output
     }
+
+    needExpansion() {
+        return this.length() > this.loadFactor * this.capacity;
+    }
 }
 
 function validateIndex(index, length) {
