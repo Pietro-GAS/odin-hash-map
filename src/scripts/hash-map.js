@@ -168,6 +168,28 @@ export class HashMap {
         }
         return output
     }
+
+    entries() {
+        let index = 0;
+        const output = [];
+        while (index < this.buckets.length) {
+            validateIndex(index, this.buckets.length);
+            const bucket = this.buckets[index];
+            if (!bucket.head) {
+                index ++;
+                continue
+            } else {
+                let current = bucket.head;
+                while (current) {
+                    const entry = [current.value[0], current.value[1]];
+                    output.push(entry);
+                    current = current.next;
+                }
+                index ++;
+            }
+        }
+        return output
+    }
 }
 
 function validateIndex(index, length) {
