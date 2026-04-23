@@ -21,6 +21,9 @@ export class HashMap {
     }
 
     set(key, value) {
+        if (this.needExpansion()) {
+            this.capacity *= 2;
+        }
         const index = this.hash(key);
         validateIndex(index, this.buckets.length);
         const bucket = this.buckets[index];
@@ -192,7 +195,7 @@ export class HashMap {
     }
 
     needExpansion() {
-        return this.length() > this.loadFactor * this.capacity;
+        return this.length() + 1 > this.loadFactor * this.capacity;
     }
 }
 
