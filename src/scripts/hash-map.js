@@ -147,6 +147,27 @@ export class HashMap {
         }
         return output
     }
+
+    values() {
+        let index = 0;
+        const output = [];
+        while (index < this.buckets.length) {
+            validateIndex(index, this.buckets.length);
+            const bucket = this.buckets[index];
+            if (!bucket.head) {
+                index ++;
+                continue
+            } else {
+                let current = bucket.head;
+                while (current) {
+                    output.push(current.value[1]);
+                    current = current.next;
+                }
+                index ++;
+            }
+        }
+        return output
+    }
 }
 
 function validateIndex(index, length) {
