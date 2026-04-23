@@ -9,7 +9,8 @@ console.log(`hashmap before setting:`);
 for(let i = 0; i < map.buckets.length; i++) {
     map.buckets[i].print();
 }
-console.log(`map length before setting: ${map.length()}\n`);
+console.log(`map length before setting: ${map.length()}`);
+console.log(`keys before setting: ${map.keys()}\n`);
 
 map.set("key1", "value1");
 map.set("key2", "value2");
@@ -17,7 +18,8 @@ console.log(`hashmap after setting:`)
 for(let i = 0; i < map.buckets.length; i++) {
     map.buckets[i].print();
 };
-console.log(`map length after setting: ${map.length()}\n`);
+console.log(`map length after setting: ${map.length()}`);
+console.log(`keys after setting: ${map.keys()}\n`);
 
 map.set("key2", "newValue2");
 for(let i = 0; i < map.buckets.length; i++) {
@@ -36,11 +38,13 @@ console.log(`map after removing "key1:"`);
 for(let i = 0; i < map.buckets.length; i++) {
     map.buckets[i].print();
 };
-console.log(`map length after removing "key1": ${map.length()}\n`);
+console.log(`map length after removing "key1": ${map.length()}`);
+console.log(`keys after removing "key1": ${map.keys()}\n`);
 
 map.clear();
 console.log(`map after clearing:"`);
 for(let i = 0; i < map.buckets.length; i++) {
     map.buckets[i].print();
 };
-console.log(`map length after clearing: ${map.length()}\n`);
+console.log(`map length after clearing: ${map.length()}`);
+console.log(`keys after clearing: ${map.keys()}\n`);

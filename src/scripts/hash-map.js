@@ -22,9 +22,7 @@ export class HashMap {
 
     set(key, value) {
         const index = this.hash(key);
-        if (index < 0 || index >= this.buckets.length) {
-            throw new Error("Trying to access index out of bounds");
-        }
+        validateIndex(index, this.buckets.length);
         const bucket = this.buckets[index];
         if(!bucket.head) {
             bucket.append([key, value]);
@@ -46,6 +44,7 @@ export class HashMap {
             return null
         }
         let index = this.hash(key);
+        validateIndex(index, this.buckets.length);
         const bucket = this.buckets[index];
         let current = bucket.head;
         while(current) {
@@ -59,6 +58,7 @@ export class HashMap {
 
     has(key) {
         let index = this.hash(key);
+        validateIndex(index, this.buckets.length);
         const bucket = this.buckets[index];
         if(!bucket.head) {
             return false
@@ -78,6 +78,7 @@ export class HashMap {
             return false
         }
         let index = this.hash(key);
+        validateIndex(index, this.buckets.length);
         const bucket = this.buckets[index];
         // If the key is in the head of the bucket, remove it and reassign head
         if (bucket.head.value[0] === key) {
@@ -100,6 +101,7 @@ export class HashMap {
         let index = 0;
         let sum = 0;
         while (index < this.buckets.length) {
+            validateIndex(index, this.buckets.length);
             let bucket = this.buckets[index];
             if(!bucket.head) {
                 index ++;
@@ -119,7 +121,36 @@ export class HashMap {
     clear() {
         let index = 0;
         while (index < this.buckets.length) {
-            this.buckets[i] = new LinkedList();
+            validateIndex(index, this.buckets.length);
+            this.buckets[index] = new LinkedList();
+            index ++;
         }
+    }
+
+    keys() {
+        let index = 0;
+        const output = [];
+        while (index < this.buckets.length) {
+            validateIndex(index, this.buckets.length);
+            const bucket = this.buckets[index];
+            if (!bucket.head) {
+                index ++;
+                continue
+            } else {
+                let current = bucket.head;
+                while (current) {
+                    output.push(current.value[0]);
+                    current = current.next;
+                }
+                index ++;
+            }
+        }
+        return output
+    }
+}
+
+function validateIndex(index, length) {
+    if (index < 0 || index >= length) {
+        throw new Error("Trying to access index out of bounds");
     }
 }
